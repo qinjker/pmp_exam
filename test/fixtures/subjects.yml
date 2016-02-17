@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyText
+  exam_paper_id: 
+
+two:
+  content: MyText
+  exam_paper_id: 
