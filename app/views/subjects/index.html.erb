@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-12">
+  <%= simple_form_for ExamAnswer.new, remote: true do |f| %>
+  <% @subjects.each do |subject|%>
+    <%= f.hidden_field :exam_paper_id, value: @exam_paper.id %>
+    <%= f.hidden_field :subject_id, value: subject.id %>
+      <fieldset>
+        <div class="form-group is-empty">
+            <h5><%= subject.content%></h5>
+        </div>
+        <div class="form-group is-empty">
+          <% subject.exam_options.each do |option|%>
+            <div class="radio radio-primary">
+              <label>
+                <input type="radio" name="exam_answer[exam_option_id]" id="exam_answer_exam_option_id" value="<%= option.id%>" checked="">
+                <p class="text-info"><%= option.content%></p>
+              </label>
+            </div>
+          <% end %>
+        </div>
+      </fieldset>
+    <% end %>
+  <% end %>
+  <ul class="pager">
+    <%= link_to_previous_page @subjects, '上一题', class: 'btn btn-primary btn-lg btn-block btn-raised' %>
+    <%= link_to_next_page @subjects, '下一题', class: 'btn btn-primary btn-lg btn-block btn-raised' %>
+  </ul>
+  </div>
+</div>
+<script>
+  $(function () {
+    $.material.init();
+  });
+  $('input[type=radio]').on('change', function() {
+    $(this).closest("form").submit();
+  });
+</script>

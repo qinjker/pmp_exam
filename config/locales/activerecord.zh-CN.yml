@@ -1,0 +1,51 @@
+cn:
+  activerecord:
+    models:
+      admin: "管理员"
+      exam_option: "考题选项"
+      exam_paper: "PMP试卷"
+      exam_answer: "PMP试卷答题卡"
+      subject: "考题"
+    attributes:
+      admin:
+        current_password: "当前密码"
+        email: "电子邮箱"
+        password: "密码"
+        password_confirmation: "密码确认"
+        remember_me: "记住登录信息"
+      exam_paper:
+        title: "标题"
+        created_at: "添加时间"
+        updated_at: "更新时间"
+      subject:
+        exam_paper_id: "试卷"
+        exam_paper: "试卷"
+        content: "题目"
+        created_at: "添加时间"
+        updated_at: "更新时间"
+      exam_option:
+        subject_id: "考题"
+        subject: "考题"
+        content: "选项"
+        created_at: "添加时间"
+        updated_at: "更新时间"
+      exam_answer:
+        user_id: "用户"
+        user: "用户"
+        subject_id: "考题"
+        subject: "考题"
+        exam_paper_id: "试卷"
+        exam_paper: "试卷"
+        exam_option_id: "选项"
+        exam_option: "选项"
+      exam_standard_answer:
+        subject_id: "考题"
+        subject: "考题"
+        exam_paper_id: "试卷"
+        exam_paper: "试卷"
+        exam_option_id: "选项"
+        exam_option: "选项"
+        reson: "原因"
+    errors:
+      messages:
+        required: "必需填写"

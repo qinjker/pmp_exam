@@ -1,0 +1,16 @@
+<div class="list-group">
+  <% @exam_papers.each do |exam_paper|%>
+    <div class="list-group-item">
+      <div class="row-action-primary">
+        <i class="material-icons">folder</i>
+      </div>
+      <%= link_to exam_paper_subjects_path(exam_paper) do %>
+        <div class="row-content">
+          <div class="action-secondary"><i class="material-icons">info</i></div>
+          <h4 class="list-group-item-heading"><%= exam_paper.title%></h4>
+        </div>
+      <% end %>
+    </div>
+    <div class="list-group-separator"></div>
+  <% end %>
+</div>
