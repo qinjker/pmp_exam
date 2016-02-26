@@ -26,9 +26,14 @@ gem "figaro"
 
 gem 'devise'
 
+gem 'enumerize'
+
 gem 'rails_admin'
 
 gem 'simple_form'
+
+gem "administrate", "~> 0.1.4"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

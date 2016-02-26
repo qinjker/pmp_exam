@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225071953) do
+ActiveRecord::Schema.define(version: 20160226021613) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -36,15 +36,23 @@ ActiveRecord::Schema.define(version: 20160225071953) do
     t.integer  "exam_paper_id",  limit: 4
     t.integer  "exam_option_id", limit: 4
     t.integer  "subject_id",     limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.integer  "flag",           limit: 4, default: 0
   end
+
+  add_index "exam_answers", ["exam_option_id"], name: "index_exam_answers_on_exam_option_id", using: :btree
+  add_index "exam_answers", ["exam_paper_id"], name: "index_exam_answers_on_exam_paper_id", using: :btree
+  add_index "exam_answers", ["subject_id"], name: "index_exam_answers_on_subject_id", using: :btree
+  add_index "exam_answers", ["user_id"], name: "index_exam_answers_on_user_id", using: :btree
 
   create_table "exam_options", force: :cascade do |t|
     t.text     "content",    limit: 65535
     t.integer  "subject_id", limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.integer  "flag",       limit: 4,     default: 0
+    t.text     "reason",     limit: 65535
   end
 
   add_index "exam_options", ["subject_id"], name: "index_exam_options_on_subject_id", using: :btree
