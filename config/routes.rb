@@ -9,15 +9,6 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  namespace :admin do
-    resources :admins
-    resources :users
-    resources :exam_answers
-    resources :exam_options
-    resources :exam_papers
-    resources :subjects
-  end
-  
   resources :exam_papers, only: [:index, :show] do
     resources :subjects, only: [:index]
   end
