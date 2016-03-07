@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226021613) do
+ActiveRecord::Schema.define(version: 20160226065455) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20160226021613) do
   add_index "exam_answers", ["user_id"], name: "index_exam_answers_on_user_id", using: :btree
 
   create_table "exam_options", force: :cascade do |t|
-    t.text     "content",    limit: 65535
+    t.text     "title",      limit: 65535
     t.integer  "subject_id", limit: 4
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
@@ -58,9 +58,10 @@ ActiveRecord::Schema.define(version: 20160226021613) do
   add_index "exam_options", ["subject_id"], name: "index_exam_options_on_subject_id", using: :btree
 
   create_table "exam_papers", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "title",          limit: 255
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.integer  "subjects_count", limit: 4,   default: 0
   end
 
   create_table "exam_standard_answers", force: :cascade do |t|

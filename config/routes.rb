@@ -5,14 +5,20 @@ Rails.application.routes.draw do
   get 'subjects/index'
 
   devise_for :admins
-  devise_for :users
+  devise_for :users, controllers: {
+                       sessions: 'users/sessions'
+                   }
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :exam_papers, only: [:index, :show] do
     resources :subjects, only: [:index]
+    resources :exam_answers, only: [:create] do
+      collection do
+        get 'result'
+      end
+    end
   end
-  resources :exam_answers, only: [:create]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
