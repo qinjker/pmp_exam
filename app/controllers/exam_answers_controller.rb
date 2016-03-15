@@ -17,7 +17,7 @@ class ExamAnswersController < ApplicationController
   end
 
   def result
-    @exam_answer = current_user.exam_answers.where({exam_paper_id: @exam_paper.id}).first
+    @exam_answer = current_user.exam_answers.error.where({exam_paper_id: @exam_paper.id})
   end
 
   private

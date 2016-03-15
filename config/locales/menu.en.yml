@@ -1,0 +1,16 @@
+en:
+  common:
+    login: Log In
+    logout: Log Out
+    register: Sign Up
+    register_user: Register User
+    remember_me: Remember Me
+    forget_password: Forgot your password?
+    not_recieve_confirm_mail: Not Recieve Confirm Mail
+    not_recieve_unlock_mail: Not Recieve Unlock Mail
+    personal_information: Personal Information
+    submit_new_user: Submit New User
+    submitting: Submitting
+    logining: Logining
+    edit_password: Edit Password
+    saving: Saving

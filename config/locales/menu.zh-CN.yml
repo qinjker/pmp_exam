@@ -1,0 +1,16 @@
+cn:
+  common:
+    login: 登录
+    logout: 注销
+    register: 注册
+    register_user: 注册新用户
+    remember_me: 记住我
+    forget_password: 忘记密码?
+    not_recieve_confirm_mail: 未收到确认邮件?
+    not_recieve_unlock_mail: 未收到解锁邮件?
+    personal_information: 个人资料设置
+    submit_new_user: 提交注册信息
+    submitting: 正在提交
+    logining: 正在登录
+    edit_password: 修改密码
+    saving: 正在保存
