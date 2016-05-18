@@ -1,0 +1,18 @@
+<% @current_exam_answers.each do |current_exam_answer|%>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group is-empty">
+          <h5><%= current_exam_answer.subject.content%></h5>
+        </div>
+        <div class="form-group is-empty">
+          <% current_exam_answer.subject.exam_options.each do |option|%>
+            <div class="radio radio-primary">
+              <label>
+                <p class="text-info"><%= option.title%></p>
+              </label>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+<% end %>

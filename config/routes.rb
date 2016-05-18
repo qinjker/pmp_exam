@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
   namespace :accounts do
-  get 'exam_answers/index'
+    namespace :exam_answers do
+      get 'error/index'
+    end
+    get 'exam_answers/index'
   end
 
   get 'exam_answers/create'

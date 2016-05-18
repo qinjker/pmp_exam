@@ -1,17 +1,16 @@
 <div class="row">
   <div class="col-md-12 text-center">
-    <h3>考试卷一</h3>
-    <p>卷一是一套好卷子</p>
+    <h3><%= @exam_paper.title%></h3>
     <ul class="list-inline">
       <li>
-        <a class="button button-3d button-action button-rounded" href="http://www.bootcss.com/">
-          122<i class="material-icons">check</i>
+        <a class="button button-3d button-action button-rounded" href="#">
+          <%= @user_answers_right_count%><i class="material-icons">check</i>
         </a>
       </li>
       <li>
-        <a class="button button-3d button-caution button-rounded" href="http://www.bootcss.com/">
-          233<i class="material-icons">close</i>
-        </a>
+        <%= link_to accounts_exam_answers_error_index_path({exam_paper_id: @exam_paper.id}), class: 'button button-3d button-caution button-rounded' do %>
+          <%= @user_answers_error_count%><i class="material-icons">close</i>
+        <% end %>
       </li>
     </ul>
   </div>

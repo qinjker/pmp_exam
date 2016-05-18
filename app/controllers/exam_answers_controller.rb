@@ -14,10 +14,12 @@ class ExamAnswersController < ApplicationController
       @exam_answer.update_flag
       @exam_answer.save
     end
+    render text: 'done'
   end
 
   def result
-    @exam_answer = current_user.exam_answers.error.where({exam_paper_id: @exam_paper.id})
+    @user_answers_right_count = current_user.exam_answers.right.where({exam_paper_id: @exam_paper.id}).count
+    @user_answers_error_count = current_user.exam_answers.error.where({exam_paper_id: @exam_paper.id}).count
   end
 
   private

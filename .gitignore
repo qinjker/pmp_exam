@@ -16,3 +16,5 @@ log/*
 
 # Ignore application configuration
 /config/application.yml
+app/.DS_Store
+app/controllers/.DS_Store

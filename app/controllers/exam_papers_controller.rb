@@ -14,8 +14,4 @@ class ExamPapersController < ApplicationController
   def create
   end
 
-  def result
-    @exam_paper = ExamPaper.find_by_id(params[:id])
-
-  end
 end

@@ -64,15 +64,6 @@ ActiveRecord::Schema.define(version: 20160226065455) do
     t.integer  "subjects_count", limit: 4,   default: 0
   end
 
-  create_table "exam_standard_answers", force: :cascade do |t|
-    t.integer  "exam_paper_id",  limit: 4
-    t.integer  "exam_option_id", limit: 4
-    t.integer  "subject_id",     limit: 4
-    t.text     "reson",          limit: 65535
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-  end
-
   create_table "subjects", force: :cascade do |t|
     t.text     "content",       limit: 65535
     t.integer  "exam_paper_id", limit: 4
