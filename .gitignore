@@ -18,3 +18,6 @@ log/*
 /config/application.yml
 app/.DS_Store
 app/controllers/.DS_Store
+config/deploy.rb
+config/deploy/
+Capfile

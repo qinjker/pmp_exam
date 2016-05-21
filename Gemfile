@@ -52,3 +52,13 @@ group :development, :test do
   gem 'spring'
 end
 
+group :development do
+  gem 'capistrano', "~> 3.4"
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-unicorn', :require => false
+  # Add this if you're using rvm
+  # gem 'capistrano-rvm'
+end
+
