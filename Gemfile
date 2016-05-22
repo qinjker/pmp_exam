@@ -58,6 +58,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano-unicorn', :require => false
+  gem 'rvm-capistrano'
   # Add this if you're using rvm
   # gem 'capistrano-rvm'
 end
