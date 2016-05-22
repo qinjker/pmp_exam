@@ -21,4 +21,4 @@ app/controllers/.DS_Store
 config/deploy.rb
 config/deploy/
 Capfile
-config/dd.yml
+config/secrets.yml
