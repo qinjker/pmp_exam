@@ -20,3 +20,5 @@ test:
   database: pmp_exam_test
   username: root
   password: *****
+  SECRET_KEY_BASE:
+  DEVISE_SECRET_KEY:  
