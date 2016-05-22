@@ -1,34 +1,25 @@
-module Rails
-  class << self
-    def root
-      File.expand_path(__FILE__).split('/')[0..-3].join('/')
-    end
-  end
-end
-rails_env = ENV["RAILS_ENV"] || "development"
+# paths
+app_path = "/home/shenyong/www/pmp_exam"
+working_directory "#{app_path}/current"
+pid               "#{app_path}/current/tmp/pids/unicorn.pid"
 
-preload_app true
-working_directory Rails.root
-pid "#{Rails.root}/tmp/pids/unicorn.pid"
-stderr_path "#{Rails.root}/log/unicorn.log"
-stdout_path "#{Rails.root}/log/unicorn.log"
+# listen
+listen "#{app_path}/shared/tmp/unicorn-pmp_exam.socket", :backlog => 64
 
-listen 19999, :tcp_nopush => false
+# logging
+stderr_path "log/unicorn.stderr.log"
+stdout_path "log/unicorn.stdout.log"
 
-if rails_env == "production"
-  worker_processes 4
-else
-  worker_processes 1
-end
-timeout 120
+# workers
+worker_processes 4
 
-if GC.respond_to?(:copy_on_write_friendly=)
-  GC.copy_on_write_friendly = true
-end
-
+# use correct Gemfile on restarts
 before_exec do |server|
-  ENV['BUNDLE_GEMFILE'] = "#{Rails.root}/Gemfile"
+  ENV['BUNDLE_GEMFILE'] = "#{app_path}/current/Gemfile"
 end
+
+# preload
+preload_app true
 
 before_fork do |server, worker|
   # the following is highly recomended for Rails + "preload_app true"
@@ -37,25 +28,20 @@ before_fork do |server, worker|
     ActiveRecord::Base.connection.disconnect!
   end
 
-  old_pid = "#{Rails.root}/tmp/pids/unicorn.pid.oldbin"
+  # Before forking, kill the master process that belongs to the .oldbin PID.
+  # This enables 0 downtime deploys.
+  old_pid = "#{server.config[:pid]}.oldbin"
   if File.exists?(old_pid) && server.pid != old_pid
     begin
       Process.kill("QUIT", File.read(old_pid).to_i)
     rescue Errno::ENOENT, Errno::ESRCH
-      puts "Send 'QUIT' signal to unicorn error!"
+      # someone else did our job for us
     end
   end
 end
 
 after_fork do |server, worker|
-  # the following is *required* for Rails + "preload_app true",
   if defined?(ActiveRecord::Base)
     ActiveRecord::Base.establish_connection
   end
-
-  # if preload_app is true, then you may also want to check and
-  # restart any other shared sockets/descriptors such as Memcached,
-  # and Redis.  TokyoCabinet file handles are safe to reuse
-  # between any number of forked children (assuming your kernel
-  # correctly implements pread()/pwrite() system calls)
 end

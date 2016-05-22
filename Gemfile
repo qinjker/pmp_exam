@@ -57,7 +57,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rvm', github: 'capistrano/rvm'
-  gem 'capistrano-unicorn', :require => false
+  gem 'capistrano3-unicorn'
   # Add this if you're using rvm
   # gem 'capistrano-rvm'
 end
