@@ -21,4 +21,4 @@ test:
   username: root
   password: *****
   SECRET_KEY_BASE:
-  DEVISE_SECRET_KEY:  
+  DEVISE_SECRET_KEY:
