@@ -62,3 +62,4 @@ group :development do
   # gem 'capistrano-rvm'
 end
 
+gem 'unicorn'
