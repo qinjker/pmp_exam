@@ -2,7 +2,7 @@
 app_path = "/home/shenyong/www/pmp_exam"
 working_directory "#{app_path}/current"
 timeout 30
-pid               "#{app_path}/shared/tmp/sockets/pids/unicorn.pid"
+pid               "#{app_path}/shared/tmp/pids/unicorn.pid"
 
 # listen
 listen "#{app_path}/shared/tmp/sockets/unicorn-pmp_exam.socket", :backlog => 64
